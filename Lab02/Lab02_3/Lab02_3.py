@@ -1,20 +1,19 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
-x = np.arange(-1, 1, 0.000005)
-c = 2
+x = np.arange(-1, 1, 0.00001)
+r = 1
+c = 1
 count = 10000
 
-f = lambda x: (x + 1) * (x > -1) * (x <= 0)   +   (-x + 1) * (x > 0) * (x <= 1)
-g = lambda x: c * 0.5 * np.exp(-np.abs(x))
-g_inv = lambda x:  np.log(2*x) * (x <= 1/2) - np.log(-2*x + 2) * (x > 1/2)
+f = lambda x: np.sqrt(np.power(r, 2) - np.power(x, 2))
+g = lambda x: c * (x >= -1) * (x <= 1)
 
 y1 = f(x)
 y2 = g(x)
 
-ran_x = g_inv(np.random.uniform(1 / (2 * np.e), 1 - 1 / (2*np.e), count))
-ran_y = np.random.uniform(0, 1, count) * g(ran_x)
-
+ran_x = np.random.uniform(-1, 1, count)
+ran_y = np.random.uniform(0, g(ran_x), count)
 good_x = []
 good_y = []
 bad_x = []
@@ -31,10 +30,11 @@ for i in range(ran_x.size):
 
 
 fig, (ax) = plt.subplots(1, 2)
+
 ax[1].plot(x, y1, label='f(x)')
-ax[1].plot(x, y2, label='g(x)')
-ax[1].plot(good_x, good_y, 'o')
-ax[1].plot(bad_x, bad_y, 'o')
+ax[1].plot(x, y2, label='cg(x)')
+ax[1].plot(good_x, good_y, 'o',color='blue')
+ax[1].plot(bad_x, bad_y, 'o',color='orange')
 ax[1].set_ylabel('Y')
 ax[1].set_xlabel('X')
 ax[1].legend()

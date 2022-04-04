@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 
 x = np.arange(-1, 1, 0.000005)
 c = 2
-count = 10000
+count = 2000
 
 f = lambda x: (x + 1) * (x > -1) * (x <= 0)   +   (-x + 1) * (x > 0) * (x <= 1)
 g = lambda x: c * 0.5 * np.exp(-np.abs(x))
@@ -32,9 +32,9 @@ for i in range(ran_x.size):
 
 fig, (ax) = plt.subplots(1, 2)
 ax[1].plot(x, y1, label='f(x)')
-ax[1].plot(x, y2, label='g(x)')
-ax[1].plot(good_x, good_y, 'o')
-ax[1].plot(bad_x, bad_y, 'o')
+ax[1].plot(x, y2, label='cg(x)')
+ax[1].plot(good_x, good_y, 'o',color='blue')
+ax[1].plot(bad_x, bad_y, 'o',color='orange')
 ax[1].set_ylabel('Y')
 ax[1].set_xlabel('X')
 ax[1].legend()
