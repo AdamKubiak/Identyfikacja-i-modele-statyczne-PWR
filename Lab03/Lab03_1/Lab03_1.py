@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-amount = 150
+amount = 10000
 sigma = 2,5
 mu = 3
 X = np.random.randn(1,amount)

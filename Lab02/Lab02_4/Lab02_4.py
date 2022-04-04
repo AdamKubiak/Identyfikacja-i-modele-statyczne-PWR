@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 
 x = np.arange(-5, 5, 0.00001)
 c = np.sqrt(2 * np.e / np.pi)
-count = 10000
+count = 1000000
 
 f = lambda x: (1 / np.sqrt(2 * np.pi)) * np.exp(-np.power(x, 2)/2)
 g = lambda x: c * 0.5 * np.exp(-np.abs(x))
