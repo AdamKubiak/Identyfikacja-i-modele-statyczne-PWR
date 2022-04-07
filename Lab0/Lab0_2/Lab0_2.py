@@ -18,17 +18,17 @@ def generate_numbers(results_count, start_value, c, m, k):
   return x
 
 
-start_value = 0.01137
+start_value = 0.0001
 results_count = 100
-c = 0.01769
-m = 8 #zakres
+c = 0.02323
+m = 0.60 #zakres
 k = 5
 
 x = np.arange(0, results_count)
 y = generate_numbers(results_count, start_value, c, m, k)
- 
 
 fig, (ax) = plt.subplots(1, 2)
+
 ax[1].plot(x, y, 'o')
 ax[1].set_ylabel('Wartość próbki')
 ax[1].set_xlabel('Numer próbki')
@@ -37,5 +37,5 @@ ax[0].hist(y, density=True)
 ax[0].set_xlabel('Wartość próbki')
 ax[0].set_ylabel('Ilość próbek o danej wartości')
 ax[0].legend()
-
+plt.title(f'N = {results_count}, Seed = {start_value}, C = {c}, M = {m}, K = {k}')
 plt.show()
